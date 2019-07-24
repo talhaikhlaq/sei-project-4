@@ -11,5 +11,5 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 bcrypt = Bcrypt(app)
-
+# pylint: disable=W0611, C0413
 from config import router
