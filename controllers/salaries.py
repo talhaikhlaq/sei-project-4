@@ -1,13 +1,10 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint
 from models.salary import Salary, SalarySchema, annual_net_salary
 
-api = Blueprint('breeds', __name__)
+api = Blueprint('salaries', __name__)
 salary_schema = SalarySchema()
 
-@api.route('/salary', methods=['POST'])
+@api.route('/salary', methods=['GET'])
 def salary_calc():
-    data = request.get_json()
-    salary, errors = salary_schema.load(data)
-    if errors:
-        return jsonify(errors), 422
-    return annual_net_salary(salary)
+    salaries = Salary.query.all()
+    return annual_net_salary.jsonify(salaries, many=True), 200

@@ -1,4 +1,5 @@
 from marshmallow import fields
+from sqlalchemy.ext.hybrid import hybrid_property
 from app import db, ma
 from models.base import BaseModel, BaseSchema
 
@@ -15,18 +16,42 @@ class Salary(db.Model, BaseModel):
     annual_non_pensionable_value = db.Column(db.Integer, nullable=False)
 
     # pylint: disable=R0913
+    def __init__(
+        self,
+        user_id,
+        annual_gross_salary,
+        annual_tax_allowance,
+        tax_rate,
+        annual_ni_allowance,
+        ni_rate,
+        annual_non_pensionable_value,
+        pension_contribution
+    ):
+        self.user_id = user_id
+        self.annual_gross_salary = annual_gross_salary
+        self.annual_tax_allowance = annual_tax_allowance
+        self.tax_rate = tax_rate
+        self.annual_ni_allowance = annual_ni_allowance
+        self.ni_rate = ni_rate
+        self.annual_non_pensionable_value = annual_non_pensionable_value
+        self.pension_contribution = pension_contribution
 
+    @hybrid_property
     def annual_tax(self):
         return (self.annual_gross_salary - self.annual_tax_allowance) * (self.tax_rate / 100)
+
 
     def annual_ni(self):
         return (self.annual_gross_salary - self.annual_ni_allowance) * (self.ni_rate / 100)
 
+
     def annual_pension(self):
         return (self.annual_gross_salary - self.annual_non_pensionable_value) * (self.pension_contribution / 100)
 
+
     def annual_pension_tax_relief(self):
         return self.annual_pension * (self.tax_rate / 100)
+
 
     def annual_net_salary(self):
         return self.annual_gross_salary - self.annual_tax - self.annual_ni - self.annual_pension + self.annual_pension_tax_relief
