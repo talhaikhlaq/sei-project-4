@@ -1,6 +1,7 @@
 from app import app, db
 from models.user import UserSchema
 from models.salary import Salary
+from models.category import Category
 
 user_schema = UserSchema()
 
@@ -8,6 +9,7 @@ with app.app_context():
     db.drop_all()
     db.create_all()
 
+    # User Data
     talha, errors = user_schema.load({
         'username': 'talha',
         'email': 'talha@email',
@@ -74,11 +76,49 @@ with app.app_context():
     wes.salary = salary_two
     talha.salary = salary_three
 
+    outgoing_one = Category(
+        bills=1500,
+        transport=200,
+        groceries=300,
+        eating_out=120,
+        entertainment=150,
+        shopping=60,
+    )
+
+    outgoing_two = Category(
+        bills=1100,
+        transport=160,
+        groceries=200,
+        eating_out=160,
+        entertainment=200,
+        holidays=150,
+        shopping=50,
+        family=60
+    )
+
+    outgoing_three = Category(
+        bills=900,
+        transport=210,
+        groceries=160,
+        eating_out=110,
+        entertainment=100,
+        holidays=100,
+        family=100,
+        finances=120
+    )
+
+    jack.category = outgoing_one
+    wes.category = outgoing_two
+    talha.category = outgoing_three
+
     db.session.add(talha)
     db.session.add(jack)
     db.session.add(wes)
     db.session.add(salary_one)
     db.session.add(salary_two)
     db.session.add(salary_three)
+    db.session.add(outgoing_one)
+    db.session.add(outgoing_two)
+    db.session.add(outgoing_three)
 
     db.session.commit()

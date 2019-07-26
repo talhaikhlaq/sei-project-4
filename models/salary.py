@@ -7,59 +7,44 @@ from models.base import BaseModel, BaseSchema
 class Salary(db.Model, BaseModel):
     __tablename__ = 'salary'
 
-    annual_gross_salary = db.Column(db.Integer, nullable=False)
-    annual_tax_allowance = db.Column(db.Integer, nullable=False)
-    tax_rate = db.Column(db.Integer, nullable=False)
-    annual_ni_allowance = db.Column(db.Integer, nullable=False)
-    ni_rate = db.Column(db.Integer, nullable=False)
-    pension_contribution = db.Column(db.Integer, nullable=False)
-    annual_non_pensionable_value = db.Column(db.Integer, nullable=False)
+    annual_gross_salary = db.Column(db.Float, nullable=False)
+    annual_tax_allowance = db.Column(db.Float, nullable=False)
+    tax_rate = db.Column(db.Float, nullable=False)
+    annual_ni_allowance = db.Column(db.Float, nullable=False)
+    ni_rate = db.Column(db.Float, nullable=False)
+    pension_contribution = db.Column(db.Float, nullable=False)
+    annual_non_pensionable_value = db.Column(db.Float, nullable=False)
 
-    # pylint: disable=R0913
-    def __init__(
-        self,
-        user_id,
-        annual_gross_salary,
-        annual_tax_allowance,
-        tax_rate,
-        annual_ni_allowance,
-        ni_rate,
-        annual_non_pensionable_value,
-        pension_contribution
-    ):
-        self.user_id = user_id
-        self.annual_gross_salary = annual_gross_salary
-        self.annual_tax_allowance = annual_tax_allowance
-        self.tax_rate = tax_rate
-        self.annual_ni_allowance = annual_ni_allowance
-        self.ni_rate = ni_rate
-        self.annual_non_pensionable_value = annual_non_pensionable_value
-        self.pension_contribution = pension_contribution
 
     @hybrid_property
     def annual_tax(self):
-        return (self.annual_gross_salary - self.annual_tax_allowance) * (self.tax_rate / 100)
+        return round((self.annual_gross_salary - self.annual_tax_allowance) * (self.tax_rate / 100), 2)
 
-
+    @hybrid_property
     def annual_ni(self):
-        return (self.annual_gross_salary - self.annual_ni_allowance) * (self.ni_rate / 100)
+        return round((self.annual_gross_salary - self.annual_ni_allowance) * (self.ni_rate / 100), 2)
 
-
+    @hybrid_property
     def annual_pension(self):
-        return (self.annual_gross_salary - self.annual_non_pensionable_value) * (self.pension_contribution / 100)
+        return round((self.annual_gross_salary - self.annual_non_pensionable_value) * (self.pension_contribution / 100), 2)
 
-
+    @hybrid_property
     def annual_pension_tax_relief(self):
-        return self.annual_pension * (self.tax_rate / 100)
+        return round(self.annual_pension * (self.tax_rate / 100), 2)
 
-
+    @hybrid_property
     def annual_net_salary(self):
-        return self.annual_gross_salary - self.annual_tax - self.annual_ni - self.annual_pension + self.annual_pension_tax_relief
+        return round(self.annual_gross_salary - self.annual_tax - self.annual_ni - self.annual_pension + self.annual_pension_tax_relief, 2)
 
 
 class SalarySchema(ma.ModelSchema, BaseSchema):
 
     users = fields.Nested('UserSchema', many=True, only=('id', 'username'))
+    annual_tax = fields.Float()
+    annual_ni = fields.Float()
+    annual_pension = fields.Float()
+    annual_pension_tax_relief = fields.Float()
+    annual_net_salary = fields.Float()
 
     class Meta:
         model = Salary
