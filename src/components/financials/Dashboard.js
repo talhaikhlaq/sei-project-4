@@ -1,6 +1,8 @@
 import React from 'react'
+// import {Link} from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import Navbar from '../common/Navbar'
 
 class Dashboard extends React.Component {
   constructor() {
@@ -23,7 +25,7 @@ class Dashboard extends React.Component {
     axios.get('/api/profile', {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-      .then(res => this.setState({profile: res.data}))
+      .then(res => this.setState({ profile: res.data }))
       .catch(err => console.log(err.response))
   }
 
@@ -33,65 +35,38 @@ class Dashboard extends React.Component {
 
   render() {
     console.log(this.state)
+    const { profile } = this.state
+    if (!profile) return null
     return(
 
       <div>
-        <section className="hero">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title">
-                PYFIN
-              </h1>
-              <h2 className="subtitle">
-                Fiscal Transparency at its finest #SaveDatMoney
-              </h2>
-            </div>
-          </div>
-        </section>
-
-        <div className="tabs is-centered is-boxed is-medium">
-          <ul>
-            <li className="is-active">
-              <a>
-                <span>Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <span>Income</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <span>Outgoings</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <span>Savings</span>
-              </a>
-            </li>
-          </ul>
+        <Navbar />
+        <h2 className="subtitle">Welcome back, {profile.username}</h2>
+        <p>You last logged in on ...</p>
+        <hr/>
+        <div className="section">
+          <h2 className="subtitle">Overview</h2>
         </div>
-
         <div className="section">
           <div className="container">
             <div className="tile is-ancestor">
               <div className="tile is-parent">
                 <div className="tile is-child box">
                   <h1>INCOME THIS MONTH:</h1>
+                  <h1>£{Math.round(profile.salary.annual_net_salary) / 12}</h1>
                 </div>
                 <div className="tile is-child box">
                   <h1>OUTGOINGS THIS MONTH:</h1>
+                  <h1>£{profile.category.total_outgoing}</h1>
                 </div>
                 <div className="tile is-child box">
                   <h1>SAVINGS THIS MONTH:</h1>
+                  <h1>£{}</h1>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     )
   }
