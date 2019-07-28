@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import 'bulma'
 import './style.scss'
 
+import Home from './components/common/Home'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import Dashboard from './components/financials/Dashboard'
@@ -23,6 +24,7 @@ class App extends React.Component {
             <Route path="/income" component={Income} />
             <Route path="/outgoings" component={Outgoings} />
             <Route path="/savings" component={Savings} />
+            <Route path="/login" component={Home} />
           </Switch>
         </main>
       </BrowserRouter>

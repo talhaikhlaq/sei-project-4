@@ -30,7 +30,7 @@ class Outgoings extends React.Component {
         <p>You last logged in on ...</p>
         <hr/>
         <div className="section">
-          <h2 className="subtitle">Your Total Outgoings this month are £{profile.category.total_outgoing}</h2>
+          <h2 className="subtitle">Your Total Outgoings this month are £{(profile.category.total_outgoing).toFixed(2)}</h2>
           <h2> Breakdown: {Object.keys(profile.category).map((category, i) => (
             <li key={i}>{category}: £{profile.category[i]}</li>
           ))}

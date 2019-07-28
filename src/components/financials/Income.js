@@ -30,7 +30,16 @@ class Income extends React.Component {
         <p>You last logged in on...</p>
         <hr/>
         <div className="section">
-          <h2 className="subtitle">Your Total After Tax Income this month is £{Math.round(profile.salary.annual_net_salary) / 12}</h2>
+          <h2 className="subtitle">Your Total After Tax Income this month is £{(profile.salary.annual_net_salary / 12).toFixed(2)}</h2>
+          <h2>Yearly:</h2>
+          <p>Take Home: £{(profile.salary.annual_net_salary).toFixed(2)}</p>
+          <p>Tax: £{(profile.salary.annual_tax).toFixed(2)}</p>
+          <p>National Insurance: £{(profile.salary.annual_ni).toFixed(2)}</p>
+          <br/>
+          <h2>Monthly:</h2>
+          <p>Take Home: £{(profile.salary.annual_net_salary / 12).toFixed(2)}</p>
+          <p>Tax: £{(profile.salary.annual_tax / 12).toFixed(2)}</p>
+          <p>National Insurance: £{(profile.salary.annual_ni / 12).toFixed(2)}</p>
         </div>
       </div>
     )
