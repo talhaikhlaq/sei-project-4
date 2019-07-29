@@ -36,26 +36,27 @@ class Navbar extends React.Component {
     return(
       <div>
 
-
-        <div className="dropdown is-hoverable">
-          <div className="dropdown-trigger">
-            <button className="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-              Menu
-              <span className="icon is-small">
-                <i className="fas fa-angle-down" aria-hidden="true"></i>
-              </span>
-            </button>
-          </div>
-          <div className="dropdown-menu" id="dropdown-menu3" role="menu">
-            <div className="dropdown-content">
-              <Link to="/dashboard" className="dropdown-item">Dashboard</Link>
-              <Link to="/income" className="dropdown-item">Income</Link>
-              <Link to="/outgoings" className="dropdown-item">Outgoings</Link>
-              <Link to="/savings" className="dropdown-item">Savings</Link>
-              <Link to="/" className="dropdown-item">Report an issue</Link>
-              <Link to="/aboutus" className="dropdown-item">About Us</Link>
-              <hr className="dropdown-divider"/>
-              <a className="dropdown-item log-out" onClick={this.logout}>Logout</a>
+        <div className="dropdownContainer">
+          <div className="dropdown is-right is-hoverable">
+            <div className="dropdown-trigger">
+              <button className="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                Menu
+                <span className="icon is-small">
+                  <i className="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div className="dropdown-menu" id="dropdown-menu3" role="menu">
+              <div className="dropdown-content">
+                <Link to="/dashboard" className="dropdown-item">Dashboard</Link>
+                <Link to="/income" className="dropdown-item">Income</Link>
+                <Link to="/outgoings" className="dropdown-item">Outgoings</Link>
+                <Link to="/savings" className="dropdown-item">Savings</Link>
+                <Link to="/" className="dropdown-item">Report an issue</Link>
+                <Link to="/aboutus" className="dropdown-item">About Us</Link>
+                <hr className="dropdown-divider"/>
+                <a className="dropdown-item log-out" onClick={this.logout}>Logout</a>
+              </div>
             </div>
           </div>
         </div>

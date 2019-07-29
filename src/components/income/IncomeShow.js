@@ -3,8 +3,9 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Navbar from '../common/Navbar'
+import WelcomeBack from '../common/WelcomeBack'
 
-class Income extends React.Component {
+class IncomeShow extends React.Component {
   constructor() {
     super()
 
@@ -26,9 +27,7 @@ class Income extends React.Component {
     return(
       <div>
         <Navbar />
-        <h2 className="subtitle">Welcome back, {profile.username}</h2>
-        <p>You last logged in on...</p>
-        <hr/>
+        <WelcomeBack />
         <div className="section">
           <h2 className="subtitle">Your Total After Tax Income this month is £{(profile.salary.annual_net_salary / 12).toFixed(2)}</h2>
           <h2>Yearly:</h2>
@@ -46,4 +45,4 @@ class Income extends React.Component {
   }
 }
 
-export default Income
+export default IncomeShow

@@ -61,7 +61,7 @@ class Dashboard extends React.Component {
                 </div>
                 <div className="tile is-child box">
                   <h1>SAVINGS THIS MONTH:</h1>
-                  <h1>£{}</h1>
+                  <h1>£{((profile.salary.annual_net_salary / 12) - (profile.category.total_outgoing) + (profile.salary.annual_pension / 12)).toFixed(2)}</h1>
                 </div>
               </div>
             </div>

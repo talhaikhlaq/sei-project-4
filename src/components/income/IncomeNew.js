@@ -1,14 +1,15 @@
 import React from 'react'
-// import {Link} from 'react-router-dom'
 import axios from 'axios'
-import Auth from '../../lib/Auth'
 import Navbar from '../common/Navbar'
+import IncomeForm from './IncomeForm'
+import Auth from '../../lib/Auth'
 
-class Outgoings extends React.Component {
+class IncomeNew extends React.Component {
   constructor() {
     super()
 
     this.state = { profile: null }
+    // this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -19,8 +20,12 @@ class Outgoings extends React.Component {
       .catch(err => console.log(err.response))
   }
 
+  // handleChange({ target: value }) {
+  //   const salary = { ...this.state.profile, [name]: value }
+  //   console.log(salary)
+  // }
+
   render() {
-    console.log(this.state)
     const { profile } = this.state
     if (!profile) return null
     return(
@@ -29,16 +34,17 @@ class Outgoings extends React.Component {
         <h2 className="subtitle">Welcome back, {profile.username}</h2>
         <p>You last logged in on ...</p>
         <hr/>
-        <div className="section">
-          <h2 className="subtitle">Your Total Outgoings this month are £{(profile.category.total_outgoing).toFixed(2)}</h2>
-          <h2> Breakdown: {Object.keys(profile.category).map((category, i) => (
-            <li key={i}>{category}: £{profile.category[i]}</li>
-          ))}
-          </h2>
-        </div>
+        <section className="section-newform">
+          <h1 className="title" id="newform-title">Income Calculator</h1>
+          <IncomeForm
+            data={this.state.profile}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
+        </section>
       </div>
     )
   }
-}
 
-export default Outgoings
+}
+export default IncomeNew

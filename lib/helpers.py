@@ -1,6 +1,9 @@
 import math
 from datatime import date, datetime
 
+def is_unique(model, key, value):
+    return model.query.filter(getattr(model, key) == value).first is None
+
 months = {
     1: 'January',
     2: 'February',

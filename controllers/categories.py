@@ -10,3 +10,6 @@ category_schema = CategorySchema()
 def category_index():
     categories = Category.query.all()
     return category_schema.jsonify(categories, many=True), 200
+
+# @api.route('/category', methods=['PUT'])
+# def category_update():

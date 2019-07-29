@@ -7,10 +7,11 @@ import './style.scss'
 import Home from './components/common/Home'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
-import Dashboard from './components/financials/Dashboard'
-import Income from './components/financials/Income'
-import Outgoings from './components/financials/Outgoings'
-import Savings from './components/financials/Savings'
+import Dashboard from './components/common/Dashboard'
+import IncomeShow from './components/income/IncomeShow'
+import OutgoingsShow from './components/outgoings/OutgoingsShow'
+import SavingsShow from './components/savings/SavingsShow'
+import IncomeNew from './components/income/IncomeNew'
 
 class App extends React.Component {
   render() {
@@ -18,13 +19,14 @@ class App extends React.Component {
       <BrowserRouter>
         <main>
           <Switch>
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/income" component={Income} />
-            <Route path="/outgoings" component={Outgoings} />
-            <Route path="/savings" component={Savings} />
-            <Route path="/login" component={Home} />
+            <Route exact path="/income/new" component={IncomeNew} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/income" component={IncomeShow} />
+            <Route exact path="/outgoings" component={OutgoingsShow} />
+            <Route exact path="/savings" component={SavingsShow} />
+            <Route exact path="/login" component={Home} />
           </Switch>
         </main>
       </BrowserRouter>
