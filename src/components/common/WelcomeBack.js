@@ -21,11 +21,11 @@ class WelcomeBack extends React.Component {
     const { profile } = this.state
     if (!profile) return null
     return(
-      <div>
-        <h2 className="subtitle">Welcome back, {profile.username}</h2>
+      <section>
+        <h2 id="welcome-back" className="subtitle">Welcome back, {profile.username}</h2>
         <p>You last logged in on ...</p>
         <hr/>
-      </div>
+      </section>
     )
   }
 }

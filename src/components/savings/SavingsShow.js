@@ -27,20 +27,30 @@ class SavingsShow extends React.Component {
   render() {
     const { profile } = this.state
     if (!profile) return null
+    const salary = profile.salary[0]
     return(
       <div>
         <Navbar />
         <WelcomeBack />
+        <div id="savings-overview" className="section">
+          <h2 id="savings-overview" className="subtitle">Your Total Savings this month is £{((salary.annual_net_salary / 12) - (profile.category.total_outgoing) + (salary.annual_pension / 12)).toFixed(2)}</h2>
+        </div>
         <div className="section">
-          <h2 className="subtitle">Your Total Savings this month is £{((profile.salary.annual_net_salary / 12) - (profile.category.total_outgoing) + (profile.salary.annual_pension / 12)).toFixed(2)}</h2>
-          <h2>Breakdown:</h2>
-          <p>Balance (after monthly spends): £{((profile.salary.annual_net_salary / 12) - (profile.category.total_outgoing)).toFixed(2)}</p>
-          <p>Pension Contribution: £{(profile.salary.annual_pension / 12).toFixed(2)}</p>
-          <p>Other: </p>
-          <br/>
-          
+          <div className="container">
+            <div className="tile is-ancestor">
+              <div className="tile is-parent">
+                <div id="savings-breakdown-tile" className="tile is-child box">
+                  
+                  <p>Balance (after monthly spends): £{((salary.annual_net_salary / 12) - (profile.category.total_outgoing)).toFixed(2)}</p>
+                  <p>Pension Contribution: £{(salary.annual_pension / 12).toFixed(2)}</p>
+                  <p>Other: </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
     )
   }
 }

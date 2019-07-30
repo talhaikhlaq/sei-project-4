@@ -33,16 +33,31 @@ class OutgoingsShow extends React.Component {
     console.log(this.state)
     const { profile } = this.state
     if (!profile) return null
+    const breakdown = profile.category
+    delete breakdown.created_at
+    delete breakdown.updated_at
+    delete breakdown.users
+    delete breakdown.id
     return(
       <div>
         <Navbar />
         <WelcomeBack />
+        <div id="outgoings-overview" className="section">
+          <h2 id="outgoings-overview" className="subtitle">Your Total Outgoings this month are £{(profile.category.total_outgoing).toFixed(2)}</h2>
+        </div>
         <div className="section">
-          <h2 className="subtitle">Your Total Outgoings this month are £{(profile.category.total_outgoing).toFixed(2)}</h2>
-          <h2> Breakdown: {Object.keys(profile.category).map((category, i) => (
-            <li key={i}>{category}: £{profile.category[i]}</li>
-          ))}
-          </h2>
+          <div className="container">
+            <div className="tile is-ancestor">
+              <div className="tile is-parent">
+                <div id="outgoings-breakdown-tile" className="tile is-child box">
+                  <h2> {Object.keys(breakdown).map((category, i) => (
+                    <li id="outgoing-list" key={i}>{category.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}: £{breakdown[category] ? breakdown[category].toFixed(2) : '0.00' }</li>
+                  ))}
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )

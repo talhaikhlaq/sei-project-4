@@ -1,9 +1,202 @@
-.tile {
-  border-style: dotted;
+* {
+  box-sizing: border-box;
 }
 
-.dropdownContainer {
+#home {
+  background-image: url('./assets/sean-pollock-PhYq704ffdA-unsplash.jpg');
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+}
+
+#home-title {
+  font-family: 'Exo', sans-serif;
+  font-size: 130px;
+  color: #36B3D4;
+  text-align: center;
+}
+
+#modal-home {
+  opacity: 0.9;
+}
+
+#SaveDatMoney {
+  text-decoration: none;
+}
+
+#title-navbar {
+  font-family: 'Exo', sans-serif;
+  font-size: 60px;
+  color: white;
+}
+
+#subtitle-navbar {
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+  color: white;
+}
+
+#menu-button {
+  font-family: 'Exo', sans-serif;
+  background-color: inherit;
+  color: white;
+}
+
+.dropdown {
   display: flex;
   justify-content: flex-end;
-  padding: 10px;
+}
+
+.hero {
+  background-image: linear-gradient(blue, #36B3D4);
+
+}
+
+.tabs {
+  background-color: #36B3D4;
+  font-family: 'Exo', sans-serif;
+  padding-top: 10px;
+}
+
+#welcome-back {
+  // background-color: #36B3D4;
+  font-family: 'Exo', sans-serif;
+  text-align: center;
+  padding-top: 10px;
+}
+
+div#overview {
+  font-family: 'Exo', sans-serif;
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+h2#overview {
+  font-size: 40px;
+}
+
+div#income-overview {
+  font-family: 'Exo', sans-serif;
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+h2#income-overview {
+  font-size: 40px;
+}
+
+div#savings-overview {
+  font-family: 'Exo', sans-serif;
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+h2#savings-overview {
+  font-size: 40px;
+}
+
+div#outgoings-overview {
+  font-family: 'Exo', sans-serif;
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+h2#outgoings-overview {
+  font-size: 40px;
+}
+
+div#incomenew-overview {
+  font-family: 'Exo', sans-serif;
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+h2#incomenew-overview {
+  font-size: 40px;
+}
+
+// .tile {
+//   border-style: dotted;
+// }
+
+.tile.is-child {
+    margin: 10px !important;
+}
+
+#income-tile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+}
+
+#outgoings-tile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+}
+
+#savings-tile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+}
+
+#yearly-tile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+}
+
+
+#monthly-tile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+}
+
+#savings-breakdown-tile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+}
+
+#outgoings-breakdown-tile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+}
+
+#incomecalc-tile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+#outgoing-list {
+  list-style: none;
+}
+
+h2#enterSalaryLabel {
+  font-family: 'Exo', sans-serif;
+  font-size: 30px;
+}
+
+input#salaryInput {
+  width: 250px;
+  height: 50px;
+}
+
+// input-placeholder {
+//   color: red;
+// }
+
+button#submitButton {
+  width: 200px;
+  height: 25px;
 }

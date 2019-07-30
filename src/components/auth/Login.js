@@ -33,8 +33,9 @@ class Login extends React.Component {
     return (
       <main className="section">
         <div className="container">
-          <form onSubmit={this.handleSubmit}>
-            <h2 className="title">Login/Homepage</h2>
+          <h1 id="home-title">PYFIN</h1>
+          <form id="login-form" onSubmit={this.handleSubmit}>
+            <h2 className="title"></h2>
             <div className="field">
               <label className="label">Email</label>
               <div className="control">
@@ -59,10 +60,12 @@ class Login extends React.Component {
               </div>
               {this.state.error && <small className="help is-danger">{this.state.error}</small>}
             </div>
+            <br/>
             <button type="submit" className="button is-info">Login</button>
           </form>
+          <br/>
           <div>
-            <p>Not Registered? <Link to={'/register'}>Create an account</Link></p>
+            <span>Not Registered? <Link to={'/register'}>Create an account</Link></span>
           </div>
         </div>
       </main>

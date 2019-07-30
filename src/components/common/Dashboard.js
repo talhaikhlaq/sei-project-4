@@ -1,5 +1,5 @@
 import React from 'react'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Navbar from '../common/Navbar'
@@ -37,6 +37,7 @@ class Dashboard extends React.Component {
     console.log(this.state)
     const { profile } = this.state
     if (!profile) return null
+    const salary = profile.salary[0]
     return(
 
       <div>
@@ -44,25 +45,25 @@ class Dashboard extends React.Component {
         <h2 className="subtitle">Welcome back, {profile.username}</h2>
         <p>You last logged in on ...</p>
         <hr/>
-        <div className="section">
-          <h2 className="subtitle">Overview</h2>
+        <div id="overview" className="section">
+          <h2 id="overview" className="subtitle">Overview</h2>
         </div>
         <div className="section">
           <div className="container">
             <div className="tile is-ancestor">
               <div className="tile is-parent">
-                <div className="tile is-child box">
+                <Link to="/income" id="income-tile" className="tile is-child box">
                   <h1>INCOME THIS MONTH:</h1>
-                  <h1>£{(profile.salary.annual_net_salary / 12).toFixed(2)}</h1>
-                </div>
-                <div className="tile is-child box">
+                  <h1>£{(salary.annual_net_salary / 12).toFixed(2)}</h1>
+                </Link>
+                <Link to="/outgoings" id="outgoings-tile" className="tile is-child box">
                   <h1>OUTGOINGS THIS MONTH:</h1>
                   <h1>£{(profile.category.total_outgoing).toFixed(2)}</h1>
-                </div>
-                <div className="tile is-child box">
+                </Link>
+                <Link to="savings>" id="savings-tile" className="tile is-child box">
                   <h1>SAVINGS THIS MONTH:</h1>
-                  <h1>£{((profile.salary.annual_net_salary / 12) - (profile.category.total_outgoing) + (profile.salary.annual_pension / 12)).toFixed(2)}</h1>
-                </div>
+                  <h1>£{((salary.annual_net_salary / 12) - (profile.category.total_outgoing) + (salary.annual_pension / 12)).toFixed(2)}</h1>
+                </Link>
               </div>
             </div>
           </div>

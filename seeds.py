@@ -50,6 +50,7 @@ with app.app_context():
         ni_rate=12,
         pension_contribution=5,
         annual_non_pensionable_value=10000,
+        user=jack
     )
 
     salary_two = Salary(
@@ -59,7 +60,8 @@ with app.app_context():
         annual_ni_allowance=8632,
         ni_rate=12,
         pension_contribution=5,
-        annual_non_pensionable_value=10000
+        annual_non_pensionable_value=10000,
+        user=wes
     )
 
     salary_three = Salary(
@@ -69,12 +71,13 @@ with app.app_context():
         annual_ni_allowance=8632,
         ni_rate=12,
         pension_contribution=5,
-        annual_non_pensionable_value=10000
+        annual_non_pensionable_value=10000,
+        user=talha
     )
 
-    jack.salary = salary_one
-    wes.salary = salary_two
-    talha.salary = salary_three
+    # jack.salary = salary_one
+    # wes.salary = salary_two
+    # talha.salary = salary_three
 
     outgoing_one = Category(
         bills=1500,

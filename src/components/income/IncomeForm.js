@@ -14,7 +14,7 @@ const IncomeForm = ({ profile, handleChange, handleSubmit }) => (
           onChange={handleChange}
           value={profile.salary.annual_gross_salary}
         />
-        <label htmlFor="input" className="input-label">Annual Gross Salary (£)</label>
+        <label htmlFor="input" className="userSalaryInput">Annual Gross Salary (£)</label>
 
       </div>
     </form>

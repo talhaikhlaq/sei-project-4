@@ -1,47 +1,56 @@
 import React from 'react'
 import axios from 'axios'
 import Navbar from '../common/Navbar'
-import IncomeForm from './IncomeForm'
+import WelcomeBack from '../common/WelcomeBack'
+// import IncomeForm from './IncomeForm'
+import IncomeCalc from './IncomeCalc'
 import Auth from '../../lib/Auth'
 
 class IncomeNew extends React.Component {
   constructor() {
     super()
 
-    this.state = { profile: null }
-    // this.handleChange = this.handleChange.bind(this)
+    this.state = { data: null }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
     axios.get('/api/profile', {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-      .then(res => this.setState({ profile: res.data }))
+      .then(res => this.setState({ data: res.data }))
       .catch(err => console.log(err.response))
   }
 
-  // handleChange({ target: value }) {
-  //   const salary = { ...this.state.profile, [name]: value }
-  //   console.log(salary)
-  // }
+  handleChange({ target: { name, value } }) {
+    const salary = { ...this.state.data.salary, [name]: value }
+    const data = { ...this.state.data, salary}
+    this.setState({ data })
+  }
+
+  handleSubmit(e){
+    e.preventDefault()
+    axios.put('/api/salary', {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+  }
 
   render() {
-    const { profile } = this.state
-    if (!profile) return null
+    const { data } = this.state
+    if (!data) return null
+    // console.log(this.state)
     return(
       <div>
         <Navbar />
-        <h2 className="subtitle">Welcome back, {profile.username}</h2>
-        <p>You last logged in on ...</p>
-        <hr/>
-        <section className="section-newform">
-          <h1 className="title" id="newform-title">Income Calculator</h1>
-          <IncomeForm
-            data={this.state.profile}
+        <WelcomeBack />
+        <div id="incomenew-overview" className="section">
+          <h2 id="incomenew-overview" className="subtitle">Income Calculator</h2>
+          <IncomeCalc
+            data={this.state.data}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
-        </section>
+        </div>
       </div>
     )
   }

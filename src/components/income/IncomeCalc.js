@@ -1,48 +1,52 @@
 import React from 'react'
 
-class IncomeCalc extends React.Component {
-  constructor() {
-    super()
+const IncomeCalc = ({ handleChange, handleSubmit, data }) => (
 
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  render() {
-    return(
-      <div>
-        <h2 className="subtitle">Salary Calculator</h2>
-        <hr />
-        <h2 id="enterSalaryLabel">Please enter your annual salary</h2>
-        <form onSubmit={}>
-          <input
-            id="salaryInput"
-            value="£"
-          />
-        </form>
-        <button id="submitButton">Submit</button>
-        <div className="container" id="resultsSection">
-          <div className="row">
-            <div className="col-md-6">
-            </div>
-            <div className="col-md-6">
-              <div className="mx-auto" id="tableSection">
-                <h2>You take home</h2>
-                <div id="takeHomeTotal"></div>
-                <div id="resultsTable"></div>
-                <div id="resultsTableMonthly"></div>
+  <div className="section">
+    <div className="container">
+      <div className="tile is-ancestor">
+        <div className="tile is-parent">
+          <div id="incomecalc-tile" className="tile is-child box">
+            <h2 id="enterSalaryLabel">Please enter your annual salary</h2>
+            <form onSubmit={handleSubmit}>
+              <input
+                id="salaryInput"
+                name="annual_gross_salary"
+                placeholder="Annual Gross Salary"
+                onChange={handleChange}
+                value={data.salary.annual_gross_salary || ''}
+              />
+            </form>
+            <button id="submitButton">Submit</button>
+            <div className="container" id="resultsSection">
+              <div className="row">
+                <div className="col-md-6">
+                </div>
+                <div className="col-md-6">
+                  <div className="mx-auto" id="tableSection">
+                    <h2>You take home</h2>
+                    <div id="takeHomeTotal"></div>
+                    <div id="resultsTable"></div>
+                    <div id="resultsTableMonthly"></div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="row" id="editResults">
-            <div id="editDiv">
-              <p id="editButton">Edit Details</p>
+              <div className="row" id="editResults">
+                <div id="editDiv">
+                  <p id="editButton">Edit Details</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    )
-  }
-}
+    </div>
+  </div>
+
+
+
+
+)
 export default IncomeCalc
 
 // let userSalary = '#salaryInput'

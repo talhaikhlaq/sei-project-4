@@ -2,6 +2,7 @@ from marshmallow import fields
 from sqlalchemy.ext.hybrid import hybrid_property
 from app import db, ma
 from models.base import BaseModel, BaseSchema
+from models.user import User, UserSchema
 
 # pylint: disable=R0902
 class Salary(db.Model, BaseModel):
@@ -14,6 +15,8 @@ class Salary(db.Model, BaseModel):
     ni_rate = db.Column(db.Float, nullable=False)
     pension_contribution = db.Column(db.Float, nullable=False)
     annual_non_pensionable_value = db.Column(db.Float, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', backref="salary")
 
 
     @hybrid_property
@@ -39,7 +42,7 @@ class Salary(db.Model, BaseModel):
 
 class SalarySchema(ma.ModelSchema, BaseSchema):
 
-    users = fields.Nested('UserSchema', many=True, only=('id', 'username'))
+    user = fields.Nested('UserSchema', only=('id', 'username'))
     annual_tax = fields.Float()
     annual_ni = fields.Float()
     annual_pension = fields.Float()

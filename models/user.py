@@ -4,7 +4,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from marshmallow import validates_schema, ValidationError, fields
 from app import db, ma, bcrypt
 from models.base import BaseModel, BaseSchema
-from models.salary import Salary
+# from models.salary import Salary
 from models.category import Category
 from config.environment import secret
 
@@ -14,8 +14,8 @@ class User(db.Model, BaseModel):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(128), nullable=False, unique=True)
     password_hash = db.Column(db.String(128), nullable=False)
-    salary_id = db.Column(db.Integer, db.ForeignKey('salary.id'))
-    salary = db.relationship('Salary', backref='users')
+    # salary_id = db.Column(db.Integer, db.ForeignKey('salary.id'))
+    # salary = db.relationship('Salary', backref='users')
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     category = db.relationship('Category', backref='users')
 
@@ -58,7 +58,7 @@ class UserSchema(ma.ModelSchema, BaseSchema):
 
     password = fields.String(required=True)
     password_confirmation = fields.String(required=True)
-    salary = fields.Nested('SalarySchema')
+    salary = fields.Nested('SalarySchema', many=True, exclude=('user',))
     category = fields.Nested('CategorySchema')
 
     class Meta:
