@@ -1,5 +1,5 @@
 import React from 'react'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Navbar from '../common/Navbar'
@@ -50,8 +50,9 @@ class OutgoingsShow extends React.Component {
             <div className="tile is-ancestor">
               <div className="tile is-parent">
                 <div id="outgoings-breakdown-tile" className="tile is-child box">
+                  <span id="edit-salary"><Link to="/income/new"><i className="fa fa-pencil"></i></Link></span>
                   <h2> {Object.keys(breakdown).map((category, i) => (
-                    <li id="outgoing-list" key={i}>{category.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}: £{breakdown[category] ? breakdown[category].toFixed(2) : '0.00' }</li>
+                    <li id="outgoing-list" key={i}><span>{category.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}:</span> <span>£{breakdown[category] ? breakdown[category].toFixed(2) : '0.00' }</span></li>
                   ))}
                   </h2>
                 </div>

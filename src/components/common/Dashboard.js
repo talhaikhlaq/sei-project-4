@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Navbar from '../common/Navbar'
+import WelcomeBack from '../common/WelcomeBack'
 
 class Dashboard extends React.Component {
   constructor() {
@@ -42,9 +43,7 @@ class Dashboard extends React.Component {
 
       <div>
         <Navbar />
-        <h2 className="subtitle">Welcome back, {profile.username}</h2>
-        <p>You last logged in on ...</p>
-        <hr/>
+        <WelcomeBack />
         <div id="overview" className="section">
           <h2 id="overview" className="subtitle">Overview</h2>
         </div>
@@ -60,7 +59,7 @@ class Dashboard extends React.Component {
                   <h1>OUTGOINGS THIS MONTH:</h1>
                   <h1>£{(profile.category.total_outgoing).toFixed(2)}</h1>
                 </Link>
-                <Link to="savings>" id="savings-tile" className="tile is-child box">
+                <Link to="/savings" id="savings-tile" className="tile is-child box">
                   <h1>SAVINGS THIS MONTH:</h1>
                   <h1>£{((salary.annual_net_salary / 12) - (profile.category.total_outgoing) + (salary.annual_pension / 12)).toFixed(2)}</h1>
                 </Link>

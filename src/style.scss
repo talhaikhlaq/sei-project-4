@@ -3,13 +3,20 @@
 }
 
 #home {
-  background-image: url('./assets/sean-pollock-PhYq704ffdA-unsplash.jpg');
+  background-image: url('./assets/city upwards.jpg');
   background-size: cover;
   height: 100vh;
   background-position: center;
 }
 
-#home-title {
+#login-title {
+  font-family: 'Exo', sans-serif;
+  font-size: 130px;
+  color: #36B3D4;
+  text-align: center;
+}
+
+#register-title {
   font-family: 'Exo', sans-serif;
   font-size: 130px;
   color: #36B3D4;
@@ -120,6 +127,17 @@ h2#incomenew-overview {
   font-size: 40px;
 }
 
+div#aboutus {
+  font-family: 'Exo', sans-serif;
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+h2#aboutus {
+  font-size: 40px;
+}
+
 // .tile {
 //   border-style: dotted;
 // }
@@ -150,6 +168,8 @@ h2#incomenew-overview {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-family: 'Exo', sans-serif;
   font-size: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -157,6 +177,7 @@ h2#incomenew-overview {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-family: 'Exo', sans-serif;
   font-size: 20px;
+  flex-direction: column;
 }
 
 #savings-breakdown-tile {
@@ -169,6 +190,8 @@ h2#incomenew-overview {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-family: 'Exo', sans-serif;
   font-size: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 #incomecalc-tile {
@@ -180,6 +203,8 @@ h2#incomenew-overview {
 
 #outgoing-list {
   list-style: none;
+  display: flex;
+  justify-content: space-between;
 }
 
 h2#enterSalaryLabel {
@@ -199,4 +224,14 @@ input#salaryInput {
 button#submitButton {
   width: 200px;
   height: 25px;
+}
+
+span#edit-salary {
+  text-align: right;
+}
+
+
+div.section {
+  padding-top: 35px;
+  padding-bottom: 35px;
 }

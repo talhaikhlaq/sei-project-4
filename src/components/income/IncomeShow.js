@@ -1,5 +1,5 @@
 import React from 'react'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Navbar from '../common/Navbar'
@@ -37,12 +37,14 @@ class IncomeShow extends React.Component {
             <div className="tile is-ancestor">
               <div className="tile is-parent">
                 <div id="yearly-tile" className="tile is-child box">
+                  <span id="edit-salary"><Link to="/income/new"><i className="fa fa-pencil"></i></Link></span>
                   <h2>Yearly:</h2>
                   <p>Take Home: £{(salary.annual_net_salary).toFixed(2)}</p>
                   <p>Tax: £{(salary.annual_tax).toFixed(2)}</p>
                   <p>National Insurance: £{(salary.annual_ni).toFixed(2)}</p>
                 </div>
                 <div id="monthly-tile" className="tile is-child box">
+                  <span id="edit-salary"><Link to="/income/new"><i className="fa fa-pencil"></i></Link></span>
                   <h2>Monthly:</h2>
                   <p>Take Home: £{(salary.annual_net_salary / 12).toFixed(2)}</p>
                   <p>Tax: £{(salary.annual_tax / 12).toFixed(2)}</p>

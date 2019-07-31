@@ -43,22 +43,22 @@ with app.app_context():
 
     # Salary Data
     salary_one = Salary(
-        annual_gross_salary=50000,
+        annual_gross_salary=150000,
         annual_tax_allowance=12500,
-        tax_rate=20,
+        tax_rate=45,
         annual_ni_allowance=8632,
-        ni_rate=12,
+        ni_rate=2,
         pension_contribution=5,
         annual_non_pensionable_value=10000,
         user=jack
     )
 
     salary_two = Salary(
-        annual_gross_salary=40000,
+        annual_gross_salary=60000,
         annual_tax_allowance=12500,
-        tax_rate=20,
+        tax_rate=40,
         annual_ni_allowance=8632,
-        ni_rate=12,
+        ni_rate=2,
         pension_contribution=5,
         annual_non_pensionable_value=10000,
         user=wes

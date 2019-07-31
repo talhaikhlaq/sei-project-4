@@ -18,6 +18,11 @@ class Navbar extends React.Component {
     })
       .then(res => this.setState({ profile: res.data }))
       .catch(err => console.log(err.response))
+    this.setActiveTab()
+  }
+
+  setActiveTab() {
+    this.setState({ activeTab: this.props.location.pathname.slice(1) })
   }
 
   isOwner() {
@@ -76,22 +81,33 @@ class Navbar extends React.Component {
 
         <div className="tabs is-centered is-boxed is-medium">
           <ul>
-            <li className="is-active">
+            <li
+              className={this.state.activeTab === 'dashboard' ? 'is-active' : ''}
+            >
               <Link to="/dashboard">
                 <span>Dashboard</span>
               </Link>
             </li>
-            <li>
+            <li
+              className={this.state.activeTab === 'income' ? 'is-active' : ''}
+
+            >
               <Link to="/income">
                 <span>Income</span>
               </Link>
             </li>
-            <li>
+            <li
+              className={this.state.activeTab === 'outgoings' ? 'is-active' : ''}
+
+            >
               <Link to="/outgoings">
                 <span>Outgoings</span>
               </Link>
             </li>
-            <li>
+            <li
+              className={this.state.activeTab === 'savings' ? 'is-active' : ''}
+
+            >
               <Link to="/savings">
                 <span>Savings</span>
               </Link>

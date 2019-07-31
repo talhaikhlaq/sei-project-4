@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import 'bulma'
 import './style.scss'
 
-import Home from './components/common/Home'
+// import Home from './components/common/Home'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import Dashboard from './components/common/Dashboard'
@@ -12,6 +12,7 @@ import IncomeShow from './components/income/IncomeShow'
 import OutgoingsShow from './components/outgoings/OutgoingsShow'
 import SavingsShow from './components/savings/SavingsShow'
 import IncomeNew from './components/income/IncomeNew'
+import AboutUs from './components/common/AboutUs'
 
 class App extends React.Component {
   render() {
@@ -26,7 +27,8 @@ class App extends React.Component {
             <Route exact path="/income" component={IncomeShow} />
             <Route exact path="/outgoings" component={OutgoingsShow} />
             <Route exact path="/savings" component={SavingsShow} />
-            <Route exact path="/" component={Home} />
+            <Route exact path="/aboutus" component={AboutUs} />
+            <Route exact path="/" component={Login} />
           </Switch>
         </main>
       </BrowserRouter>
